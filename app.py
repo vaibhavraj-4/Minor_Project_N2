@@ -1,13 +1,11 @@
-from flask import Flask,request,render_template
+from flask import Flask, request, render_template
 import numpy as np
-import pandas
-import sklearn
 import pickle
 
 # importing model
-model = pickle.load(open('model.pkl','rb'))
-sc = pickle.load(open('standscaler.pkl','rb'))
-ms = pickle.load(open('minmaxscaler.pkl','rb'))
+model = pickle.load(open('model.pkl', 'rb'))
+sc = pickle.load(open('standscaler.pkl', 'rb'))
+ms = pickle.load(open('minmaxscaler.pkl', 'rb'))
 
 # creating flask app
 app = Flask(__name__)
@@ -16,7 +14,7 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
-@app.route("/predict",methods=['POST'])
+@app.route("/predict", methods=['POST'])
 def predict():
     N = request.form['Nitrogen']
     P = request.form['Phosphorus']
@@ -43,10 +41,7 @@ def predict():
         result = "{} is the best crop to be cultivated right there".format(crop)
     else:
         result = "Sorry, we could not determine the best crop to be cultivated with the provided data."
-    return render_template('index.html',result = result)
-
-
-
+    return render_template('index.html', result=result)
 
 # python main
 if __name__ == "__main__":

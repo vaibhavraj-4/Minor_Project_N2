@@ -10,89 +10,56 @@
       integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
       crossorigin="anonymous"
     />
+    <style>
+      body {
+        background-image: url('https://img.freepik.com/free-photo/sunny-meadow-landscape_1112-134.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        color: #fff;
+      }
+      h1 {
+        color: mediumseagreen;
+        text-align: center;
+      }
+      .card {
+        margin: 20px auto;
+        color: white;
+      }
+      .container {
+        background: rgba(255, 255, 255, 0.8); /* Add opacity for better readability */
+        font-weight: bold;
+        padding: 15px;
+        border-radius: 15px;
+      }
+      .card-body {
+        color: black;
+        font-weight: bold;
+      }
+      label {
+        font-weight: bold;
+        color: #333;
+      }
+    </style>
   </head>
-  <style>
-    h1 {
-      color: mediumseagreen;
-      text-align: center;
-    }
-
-    .warning {
-      color: red;
-      font-weight: bold;
-      text-align: center;
-    }
-    .card {
-      margin-left: 410px;
-      margin-top: 20px;
-      color: white;
-    }
-    .container {
-      background: #edf2f7;
-      font-weight: bold;
-      padding-bottom: 10px;
-      border-radius: 15px;
-    }
-    .card-body {
-      color: black;
-      font-weight:bold;
-    }
-  </style>
-
-  <body style="background: #bcbbb8">
-    <!--=======================navbar=====================================================-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/">Crop Recommendation</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled">About</a>
-            </li>
-          </ul>
-          <form class="d-flex" role="search">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
-        </div>
-      </div>
-    </nav>
-
-    <!--==========================================================================================-->
-    <div class="container my-3 mt-3">
+  <body>
+    <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Crop Recommendation</a>
+  </div>
+</nav>
+    <!-- Main Content -->
+    <div class="container my-3">
       <h1 class="text-success">
         Crop Recommendation System <span class="text-success">🌱</span>
       </h1>
 
-      <!--      adding form-->
+      <!-- Form -->
       <form action="/predict" method="POST" onsubmit="return validateInputs()">
-        <div class="row">
+        <div class="row g-3">
           <div class="col-md-4">
-            <label for="Nitrogen">Nitrogen</label>
+            <label for="Nitrogen">Nitrogen </label>
             <input
               type="number"
               id="Nitrogen"
@@ -103,20 +70,18 @@
             />
           </div>
           <div class="col-md-4">
-            <label for="Phosphorus">Phosphorus</label>
+            <label for="Phosphorus">Phosphorus </label>
             <input
               type="number"
               id="Phosphorus"
               name="Phosphorus"
-              placeholder="Enter Phosphorus"
+              placeholder="Enter Phosphorus (10-150)"
               class="form-control"
               required
-              step="00"
             />
           </div>
-          
           <div class="col-md-4">
-            <label for="Potassium">Potassium</label>
+            <label for="Potassium">Potassium </label>
             <input
               type="number"
               id="Potassium"
@@ -127,10 +92,9 @@
             />
           </div>
         </div>
-
-        <div class="row mt-4">
+        <div class="row g-3 mt-3">
           <div class="col-md-4">
-            <label for="Temperature">Temperature</label>
+            <label for="Temperature">Temperature </label>
             <input
               type="number"
               step="0.01"
@@ -142,7 +106,7 @@
             />
           </div>
           <div class="col-md-4">
-            <label for="Humidity">Humidity</label>
+            <label for="Humidity">Humidity </label>
             <input
               type="number"
               step="0.01"
@@ -160,50 +124,44 @@
               step="0.01"
               id="Ph"
               name="Ph"
-              placeholder="Enter pH value"
+              placeholder="Enter pH"
               class="form-control"
               required
             />
           </div>
         </div>
-
-        <div class="row mt-4">
+        <div class="row g-3 mt-3">
           <div class="col-md-4">
-            <label for="Rainfall">Rainfall</label>
+            <label for="Rainfall">Rainfall (mm)</label>
             <input
               type="number"
               step="0.01"
               id="Rainfall"
               name="Rainfall"
-              placeholder="Enter Rainfall in mm"
+              placeholder="Enter Rainfall"
               class="form-control"
               required
             />
           </div>
         </div>
-
-        <div class="row mt-4">
-          <div class="col-md-12 text-center">
-            <button type="submit" class="btn btn-primary btn-lg">
-              Get Recommendation
-            </button>
+        <div class="row g-3 mt-3 text-center">
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary btn-lg">Get Recommendation</button>
           </div>
         </div>
       </form>
+
+      <!-- Result -->
       {% if result %}
       <div 
-      class="card bg-dark" 
-      style="width: 18rem; background-image: url('https://images.pexels.com/photos/55766/pexels-photo-55766.jpeg?cs=srgb&dl=pexels-pierre-sudre-9695-55766.jpg&fm=jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-      <div class="card-body">
-        <h5 class="card-title">Recommend Crop for cultivation is:</h5>
-        <p class="card-text">{{ result }}</p>
+        class="card bg-dark"
+        style="width: 18rem; background-image: url('https://images.pexels.com/photos/55766/pexels-photo-55766.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+        <div class="card-body">
+          <h5 class="card-title">Recommended Crop for Cultivation:</h5>
+          <p class="card-text">{{ result }}</p>
+        </div>
       </div>
-    </div>
-    
       {% endif %}
-    </div>
-
-
     </div>
 
     <script>
